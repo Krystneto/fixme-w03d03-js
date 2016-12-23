@@ -18,7 +18,7 @@ var $row;
 var $col;
 
 var render = function() {
-  $grid.innerHTML = renderGrid(grid);
+  $grid.html( renderGrid(grid) );
 }
 
 var renderGrid = function(grid){
@@ -74,28 +74,28 @@ var handleClick = function(event) {
 }
 
 var addEventListeners = function() {
-  $markBtn.addEventListener('click', handleClick)
+  $markBtn.click(handleClick);
 }
 
 var getPosition = function(){
   var position = {
-    row: $row.value,
-    col: $col.value
+    row: $row.val(),
+    col: $col.val()
   }
   return position;
 }
 
 var clearPosition = function() {
-  $row.value = '';
-  $col.value = '';
+  $row.val('');
+  $col.val('');
 }
 
 // http://stackoverflow.com/questions/4584373/difference-between-window-load-and-document-ready-functionshttp://stackoverflow.com/questions/4584373/difference-between-window-load-and-document-ready-functions
 window.onload = function(){
-  $grid = document.querySelector('.grid');
-  $markBtn = document.querySelector('#mark');
-  $row = document.querySelector('input[name=row]');
-  $col = document.querySelector('input[name=col]');
+  $grid = $('.grid');
+  $markBtn = $('#mark');
+  $row = $('input').eq(0);
+  $col = $('input').eq(1);
   render();
   addEventListeners();
 }
